@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search Engine</title>
+    <link rel="stylesheet" href="movieSearch.css">
+    <script src="movieSearch.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+
+    <div class="cargando">
+        <img src='https://i.gifer.com/ZKZg.gif' alt='Loading Gifs - Get The Best Gif On Gifer'>
+    </div>
+    <header class="navegacion">
+        <p class="logo">Search the movie/serie you want</p>
+        <ul class="menu">
+            <li>
+                <select name="tipo" id="tipo">
+                    <option value="">All</option>
+                    <option value="movie">Movies</option>
+                    <option value="series">Series</option>
+                </select>
+            </li>
+            <li><input type="text" class="buscador" id="buscador"></li>
+            <li><button class="btnBuscador" id="btnBuscador">Buscar</button></li>
+            <li><button id="informe">Informe</button></li>
+        </ul>
+    </header>
+
+    <section class="buscadas">
+        <p id="resultados"></p>
+        <ul id="buscadas"></ul>
+    </section>
+
+    <footer>
+        <p>MOVIE SEARCH ENGINE</p>
+        <p>Alejandro Cabrera Barea</p>
+    </footer>
+    
+</body>
+</html>

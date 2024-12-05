@@ -1,0 +1,480 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 1rem;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #213635;
+    color: #f2f2f2;
+    display: flex; /* Flexbox para que el footer esté al final */
+    flex-direction: column; /* Organiza el contenido de arriba hacia abajo */
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la pantalla */
+}
+
+/*Seccion por defecto*/
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    padding: 1rem; /* Espaciado interno */
+}
+
+/* Seccion de Navegacion*/
+/* Barra de menú*/
+header {
+    background:#0a0c0d;
+    padding: 1rem;
+    position: sticky;/* Se mantenga siempre en pantalla*/
+    top: 0;
+    z-index: 10;
+    width: 100%; /* Header ocupa todo el ancho */
+    display: flex; /* Flexbox para organizar logo y navegación */
+    align-items: center; /* Centrar elementos verticalmente */
+    justify-content: space-between; /* Espacio entre logo y menú */
+    
+}
+
+/* Logo */
+header .logo {
+    font-size: 1.5rem; /* Tamaño del texto para el logo */
+    font-weight: bold;
+    color: #348e91  ;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: 2px solid #213635; /* Borde opcional */
+    border-radius: 0.5rem; /* Borde redondeado */
+}
+
+/* Navegación */
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end; /* Menú alineado a la derecha */
+    margin: 0;
+    padding: 0;
+}
+
+/*Elementos del menú */
+nav ul li {
+    margin-left: 2rem; /* Espacio entre elementos del menú */
+}
+
+button{
+    padding: 0.5rem;
+    background-color: #348e91;
+    border-radius: 7px;
+}
+
+button:hover{
+    background-color: #1c5052;
+}
+
+select{
+    padding: 0.5rem;
+    background-color: #348e91;
+    border-radius: 7px;
+}
+select:hover,
+select:focus{
+    background-color: #1c5052;
+}
+
+input{
+    padding: 0.5rem;
+    border-radius: 7px;
+    background-color: #348e91;
+    text-align: right;
+    color: #0a0c0d;
+}
+
+input:hover,
+input:focus{
+    outline:none;
+    background-color: #1c5052;
+}
+
+/* Menú para la vista desktop*/
+.menu {
+    display: flex; /* Mantén el menú visible en pantallas grandes */
+    gap: 1rem; /* Espaciado entre los elementos */
+    list-style: none; /* Sin viñetas */
+}
+
+#resultados{
+    color: #f2f2f2;
+}
+
+.contenedorPelicula {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; 
+    margin: 10px;
+    border: 1px solid ;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #1c5052;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buscadas{
+    display: flex;
+    align-content: center;
+}
+
+#buscadas {
+    display: grid; /* Usamos grid en lugar de flex */
+    margin: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Las columnas se ajustan automáticamente */
+    gap: 2vw; /* El espacio entre las imágenes será relativo al ancho del viewport */
+    justify-items: center; /* Centra las imágenes en su celda */
+    max-width: 100%; /* Asegura que no se desborde */
+}
+
+
+#buscadas {
+    display: flex; /* Usamos flexbox en lugar de grid para organizar en filas */
+    
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en filas */
+    gap: 20px; /* Espaciado entre los elementos */
+    justify-content: center; /* Alinea los elementos al inicio de la fila */
+    background-color: #348e91; /* Fondo claro para contraste */
+    border-radius: 7px;
+}
+
+.contenedorPelicula:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor para la imagen con tamaño uniforme */
+.contenedorImagen {
+    width: 100%;   /* Asegura que ocupe el 100% del ancho del contenedor principal */
+    height: 350px; /* Tamaño fijo para las imágenes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    margin-bottom: 15px; /* Agregamos un margen inferior para separar de los títulos */
+}
+
+/* Hacemos que la imagen ocupe todo el espacio disponible y no se deforme */
+.contenedorImagen img {
+    max-width: 100%;
+    height: 100%; /* Asegura que la imagen ocupe todo el espacio del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra completamente el área sin deformarse */
+}
+
+.contenedorTexto{
+    width: 100%;
+    padding: 15px;
+    min-height: 1rem;
+}
+
+/* Agregamos padding y márgenes al texto debajo de la imagen */
+.tituloAnio {
+    padding: 10px; /* Añadimos un padding para evitar que el texto toque los bordes */
+    margin: 0 10px; /* Márgenes laterales para separar del borde del contenedor */
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 14px; /* Un poco más grande para que sea más legible */
+    color: #333;
+
+    box-sizing: border-box; /* Asegura que el padding y márgenes no afecten el tamaño total */
+    width: 100%; /* Asegura que ocupe el 100% del contenedor */
+    
+    display: flex; /* Usamos Flexbox para el centrado vertical y horizontal */
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+    height: 50px; /* Fijamos una altura para el contenedor de texto, puedes ajustarlo */
+}
+        
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    opacity: 0; /* Inicialmente invisible */
+    animation: fadeIn 0.3s forwards; /* Animación de entrada */
+}
+
+.contenedor {
+    width: 50%;
+    height: 75%;
+    background-color: #213635;
+    color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Permite scroll si el contenido es muy grande */
+    position: relative; /* Necesario para posicionar el botón de cerrar correctamente */
+    transform: scale(0.8); /* Escala inicial */
+    opacity: 0; /* Inicialmente invisible */
+    animation: modalIn 0.3s forwards; /* Animación de entrada */
+    
+    display: flex; /* Usamos flexbox para organizar los elementos dentro del contenedor */
+    flex-direction: column; /* Alinea los elementos en una columna (imagen arriba, texto abajo) */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: flex-start; /* Los elementos empiezan desde la parte superior */
+}
+
+/* Imagen centrada al inicio (pegada al techo) */
+.imagenDatos {
+    display: block; /* Hace que la imagen sea un bloque */
+    width: 100%; /* Asegura que la imagen ocupe el ancho del contenedor */
+    max-width: 300px; /* Limita el tamaño máximo de la imagen */
+    margin: 0 auto 15px; /* Centra la imagen horizontalmente y agrega margen inferior */
+    border-radius: 7px;
+}
+
+/* Estilos para los campos de texto */
+.tituloDatos, .autor, .fecha, .descripcion, .genero, .duracion, .ingresos {
+    margin: 10px 0; /* Añadimos un margen entre los campos de texto */
+    text-align: center; /* Centra el texto dentro de cada campo */
+    font-size: 16px; /* Ajustamos el tamaño del texto */
+    color: #f2f2f2; /* Color del texto */
+    border: 1px solid #f2f2f2;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.contenedorInforme {
+    width: 80%; /* Ocupa el 80% del ancho del overlay */
+    max-height: 90%;
+    background-color: #213635;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Permite scroll si el contenido es muy grande */
+    position: relative; /* Necesario para posicionar el botón de cerrar correctamente */
+    transform: scale(0.8); /* Escala inicial */
+    opacity: 0; /* Inicialmente invisible */
+    animation: modalIn 0.3s forwards; /* Animación de entrada */
+    display: flex;
+    flex-direction: row; /* Alinea los subcontenedores horizontalmente */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* Espaciado entre columnas */
+}
+
+.subcontenedorPeliculas {
+    width: 45%; /* Ocupa el 45% del contenedorInforme */
+    display: flex;
+    flex-direction: column; /* Organiza las películas en columna */
+    gap: 15px; /* Espaciado entre películas */
+}
+
+.peliculaInforme {
+    padding: 10px;
+    background-color: #348e91; /* Fondo claro para diferenciar */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.peliculaInforme .titulo,
+.peliculaInforme .rating {
+    font-size: 16px; /* Ajusta el tamaño de los textos */
+    color: #f2f2f2; /* Color del texto */
+    text-align: left; /* Alinea los textos a la izquierda */
+}
+
+.contenedorGrafico {
+    width: 50%; /* Ocupa el 50% del contenedorInforme */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c5052; /* Fondo claro para diferenciar */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    padding: 10px;
+    margin-top: 40px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f9f9f9;
+}
+/* Estilos del botón cerrar */
+.cerrar {
+    position: absolute;
+    top: 10px; /* 10px desde la parte superior */
+    right: 10px; /* 10px desde el borde derecho */
+    background-color: #348e91;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cerrar:hover {
+    background-color: #1c5052;
+}
+
+
+/* Footer Styles */
+footer {
+    padding: 12px;
+    background-color: #0a0c0d;
+    color: #f2f2f2;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed; /* Hace que el footer se quede fijo al final */
+    bottom: 0; /* Se fija al final de la vista */
+    left: 0;
+    width: 100%; /* El footer ocupa todo el ancho de la pantalla */
+}
+
+.cargando {
+    position: fixed;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Asegura que está encima de todo */
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+}
+
+.cargando img {
+    max-width: 60px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
+
+/* Animación para hacer que el modal crezca suavemente */
+@keyframes modalIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animación para hacer que el overlay aparezca suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 0.875rem;
+    }
+
+    /* Barra de navegación */
+    header {
+        padding: 1rem;
+        flex-direction: column; /* Cambiar la dirección para una mejor distribución */
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 1rem; /* Espacio entre los elementos */
+    }
+
+    .contenedorPelicula {
+        width: 90%; /* Hacer los contenedores de películas más grandes en pantallas pequeñas */
+    }
+
+    #buscadas {
+        flex-direction: column; /* Cambiar el layout a columna en pantallas pequeñas */
+        margin: 20px;
+        gap: 1rem;
+    }
+
+    .contenedorImagen {
+        width: 100%;
+        height: 250px; /* Reducir el tamaño de las imágenes */
+    }
+
+    .contenedorTexto {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .tituloAnio {
+        font-size: 12px; /* Reducir el tamaño del texto */
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 0.875rem; /* Reducir el tamaño del texto en el footer */
+    }
+}
+
+/* Estilo para pantallas muy pequeñas (por ejemplo, móviles) */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.75rem;
+    }
+
+    .contenedorPelicula {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+
+    .contenedorImagen {
+        height: 200px; /* Imágenes aún más pequeñas en móviles */
+    }
+
+    .tituloAnio {
+        font-size: 10px; /* Reducir aún más el tamaño del texto */
+    }
+
+    .contenedorInforme {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .subcontenedorPeliculas {
+        width: 100%; /* Las películas ocupan todo el ancho */
+    }
+
+    .contenedorGrafico {
+        width: 100%; /* El gráfico ocupa todo el ancho */
+        height: 200px; /* Ajustamos la altura del gráfico */
+    }
+
+    .cerrar {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+}
